@@ -1,20 +1,20 @@
- - имя: Кэш
- использует: действия/кэш@v4.1.2
- с:
- # Список файлов, каталогов и шаблонов подстановочных знаков для кэширования и восстановления
- путь: 
- # Явный ключ для восстановления и сохранения кэша
- ключ: 
- # Упорядоченная многострочная строка, содержащая ключи с совпадающим префиксом, которые используются для восстановления устаревшего кэша, если для ключа не было совпадения в кэше.  Примечание: в этом случае `cache-hit` возвращает false. 
- restore-keys: # необязательно
- # Размер фрагмента, используемого для разделения больших файлов при загрузке, в байтах
- upload-chunk-size: # необязательно
- # Необязательный логический параметр, если он включен, позволяет исполнителям Windows сохранять или восстанавливать кэши, которые могут быть восстановлены или сохранены соответственно на других платформах
- enableCrossOsArchive: # необязательно, по умолчанию false
- # Завершить рабочий процесс, если запись в кэше не найдена
- fail-on-cache-miss: # необязательно, по умолчанию false
- # Проверяет, существует ли запись в кэше для заданных входных данных (key, restore-keys) без загрузки кэша 
- только для поиска: # необязательно, значение по умолчанию равно false
- # Запустите шаг post, чтобы сохранить кэш, даже если предыдущий шаг завершится неудачей 
- сохранять-всегда: # необязательно, по умолчанию равно false
+ - name: Cache
+ uses: actions/cache@v4.1.2
+ with:
+ # A list of files, directories, and wildcard patterns to cache and restore
+ path: 
+ # An explicit key for restoring and saving the cache
+ key: 
+ # An ordered multiline string listing the prefix-matched keys, that are used for restoring stale cache if no cache hit occurred for key. Note `cache-hit` returns false in this case.
+ restore-keys: # optional
+ # The chunk size used to split up large files during upload, in bytes
+ upload-chunk-size: # optional
+ # An optional boolean when enabled, allows windows runners to save or restore caches that can be restored or saved respectively on other platforms
+ enableCrossOsArchive: # optional, default is false
+ # Fail the workflow if cache entry is not found
+ fail-on-cache-miss: # optional, default is false
+ # Check if a cache entry exists for the given input(s) (key, restore-keys) without downloading the cache
+ lookup-only: # optional, default is false
+ # Run the post step to save the cache even if another step before fails
+ save-always: # optional, default is false
  
