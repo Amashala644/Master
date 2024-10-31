@@ -1,17 +1,20 @@
- - name: Download a Build Artifact
- uses: actions/download-artifact@v4.1.8
- with:
- # Name of the artifact to download. If unspecified, all artifacts for the run are downloaded.
- name: # optional
- # Destination path. Supports basic tilde expansion. Defaults to $GITHUB_WORKSPACE
- path: # optional
- # A glob pattern matching the artifacts that should be downloaded. Ignored if name is specified.
- pattern: # optional
- # When multiple artifacts are matched, this changes the behavior of the destination directories. If true, the downloaded artifacts will be in the same directory specified by path. If false, the downloaded artifacts will be extracted into individual named directories within the specified path.
- merge-multiple: # optional, default is false
- # The GitHub token used to authenticate with the GitHub API. This is required when downloading artifacts from a different repository or from a different workflow run. If this is not specified, the action will attempt to download artifacts from the current repository and the current workflow run.
- github-token: # optional
- # The repository owner and the repository name joined together by "/". If github-token is specified, this is the repository that artifacts will be downloaded from.
- repository: # optional, default is ${{ github.repository }}
- # The id of the workflow run where the desired download artifact was uploaded from. If github-token is specified, this is the run that artifacts will be downloaded from.
- run-id: # optional, default is ${{ github.run_id }}
+ - имя: Кэш
+ использует: действия/кэш@v4.1.2
+ с:
+ # Список файлов, каталогов и шаблонов подстановочных знаков для кэширования и восстановления
+ путь: 
+ # Явный ключ для восстановления и сохранения кэша
+ ключ: 
+ # Упорядоченная многострочная строка, содержащая ключи с совпадающим префиксом, которые используются для восстановления устаревшего кэша, если для ключа не было совпадения в кэше.  Примечание: в этом случае `cache-hit` возвращает false. 
+ restore-keys: # необязательно
+ # Размер фрагмента, используемого для разделения больших файлов при загрузке, в байтах
+ upload-chunk-size: # необязательно
+ # Необязательный логический параметр, если он включен, позволяет исполнителям Windows сохранять или восстанавливать кэши, которые могут быть восстановлены или сохранены соответственно на других платформах
+ enableCrossOsArchive: # необязательно, по умолчанию false
+ # Завершить рабочий процесс, если запись в кэше не найдена
+ fail-on-cache-miss: # необязательно, по умолчанию false
+ # Проверяет, существует ли запись в кэше для заданных входных данных (key, restore-keys) без загрузки кэша 
+ только для поиска: # необязательно, значение по умолчанию равно false
+ # Запустите шаг post, чтобы сохранить кэш, даже если предыдущий шаг завершится неудачей 
+ сохранять-всегда: # необязательно, по умолчанию равно false
+ 
